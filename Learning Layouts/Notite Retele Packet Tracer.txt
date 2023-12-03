@@ -1,0 +1,17 @@
+Notite Retele Packet Tracer
+
+Make Router a DHCP server in cmd line.
+
+enable
+config t
+
+ip dhcp pool a
+
+network xxxx.xxxx.xxxx.xxxx
+netmask
+dns-server
+default-router
+
+
+--FOR RIP--
+show ip route

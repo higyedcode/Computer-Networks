@@ -1,0 +1,58 @@
+Packet Tracer Test Final
+
+124.24.178.128
+netmask: 255.255.255.128(/25)
+=> we have 128 IP addresses to split.
+
+For each Network N1, N2, N3, N4, N5, we need an extra IP for the router besides the usable x IP's, and we need to add 2 also because we can't use the first and last address, because they are reserved: the network address(1st address in the network range), the broadcast address(last address in the network range).
+So if we need x IP's for a network, we have to make sure we have space for x+3 IP's.
+
+N1: 24+1+2 = 27 < 32 = 2^5(5 host bits)
+N2: 20+1+2 = 23 < 32 = 2^5(5 host bits)
+N3: 13 < 16 = 2^4(4 host bits)
+N4: 13 < 16 = 2^4(4 host bits)
+N5: 5 < 8 = 2^3(3 host bits)
+N1234 :4+2 = 6 < 8 = 2^3(3 host bits)
+N5w: 4 = 2^2(2 host bits)
+N15: 4 = 2^2(2 host bits)
+N45: 4 = 2^2(2 host bits)
+
+
+
+Total: 32+32+16+16+8+8+4*3=64+32+16+12 = 96+28 =124 < 128
+
+
+N1: 124.24.178.128 - 124.24.178.159(/27 = /32 - 5)
+mask: 255.255.255.224
+
+N2: 124.24.178.160 - 124.24.178.191(/27)
+mask: 255.255.255.224
+WebServer: 124.24.178.162
+
+N3: 124.24.178.192 - 124.24.178.207(/28 = /32 - 4)
+mask: 255.255.255.240
+DNS: 124.24.178.194
+
+N4: 124.24.178.208 - 124.24.178.223(/28)
+mask: 255.255.255.240
+
+N5: 124.24.178.224 - 124.24.178.231(/29)
+mask: 255.255.255.248
+
+N1234: 124.24.178.232 - 124.24.178.239(/29)
+mask: 255.255.255.248
+
+N5w: 124.24.178.240 - 124.24.178.243(/30)
+mask: 255.255.255.252
+
+N15: 124.24.178.244 - 124.24.178.247(/30)
+mask: 255.255.255.252
+
+N45: 124.24.178.248 - 124.24.178.251(/30)
+mask: 255.255.255.252
+
+
+
+Netmasks help:
+128, 192, 224, 240, 248, 252, 255
+7   ,  6,  5,   4,   3,   2,   1 (nr of zeros - hosts)
